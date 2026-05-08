@@ -45,15 +45,12 @@ hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
-    div[data-testid="stToolbar"] {visibility: hidden;}
+    #header {visibility: hidden;}
+    #div[data-testid="stToolbar"] {visibility: hidden;}
     .stApp footer {display: none !important;}
     /* Optionnel : cacher aussi le "Made with Streamlit" */
     /* Force sidebar visible */
-    section[data-testid="stSidebar"] {
-        display: block !important;
-        visibility: visible !important;
-    }
+    #section[data-testid="stSidebar"] {display: block !important;visibility: visible !important;}
     
     </style>
 """
