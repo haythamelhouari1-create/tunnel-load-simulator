@@ -36,14 +36,34 @@ If you use this software in academic work, please cite it (see *Citation* sectio
 ## Repository layout
 
 ```
+## Repository layout
+
+```text
 .
-├── app.py            # Streamlit UI (imports the engine)
-├── simulator.py      # Pure NumPy/pandas simulation engine
-├── test_engine.py    # Standalone validation tests (no Streamlit)
+├── app.py                  # Streamlit UI (imports the engine)
+├── simulator.py            # Pure NumPy/pandas simulation engine
 ├── requirements.txt
 ├── README.md
-├── CITATION.cff      # Machine-readable citation metadata
-└── LICENSE
+├── CITATION.cff            # Machine-readable citation metadata
+├── LICENSE
+│
+├── examples/
+│   ├── basic_example.py          # Single realization, print KPIs
+│   └── monte_carlo_example.py    # Monte Carlo run, KPI distributions
+│
+├── tests/
+│   ├── README.md
+│   └── test_engine.py      # Standalone validation tests (no Streamlit)
+│
+└── src/
+    └── tunnel_load_simulator/
+        ├── __init__.py
+        └── simulator.py
+```
+
+- `examples/` — minimal standalone scripts to get started without the Streamlit UI.
+- `tests/` — validation and reproducibility tests (no Streamlit required).
+- `src/` — reusable simulation package, importable independently of the app.
 ```
 
 ---
@@ -91,7 +111,27 @@ print(results["kpis"].describe())
 ```
 
 ---
+## Examples
 
+### Basic simulation
+
+```bash
+python examples/basic_example.py
+```
+
+Runs a single realization for a default tunnel configuration and prints key indicators (annual energy, peak power, load factor).
+
+### Monte Carlo simulation
+
+```bash
+python examples/monte_carlo_example.py
+```
+
+Runs a full Monte Carlo experiment (20 independent realizations) and summarises the distributions of annual energy and peak power (median, P10, P90).
+
+These scripts are self-contained and require only `simulator.py` and the packages listed in `requirements.txt`. They provide a quick starting point for users who want to use the simulation engine programmatically, without the Streamlit interface.
+
+---
 ## Monte Carlo methodology
 
 For each user-selected configuration, the simulator performs **N independent runs** with seeds `base_seed + i` for `i = 0..N-1`. Each run produces a full time series at the chosen resolution.
