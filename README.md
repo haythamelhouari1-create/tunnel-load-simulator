@@ -11,33 +11,10 @@ A vectorized **Monte Carlo** generator of synthetic electrical load profiles for
 
 This software is part of the **SmartTunnel** research project, a scientific collaboration between:
 
-
-|
- Author 
-|
- Affiliation 
-|
-|
----
-|
----
-|
-|
-**
-Haytham El-Houari
-**
-, PhD 
-|
- Université Sidi Mohamed Ben Abdellah (USMBA), Fès, Morocco 
-|
-|
-**
-Cyril Voyant
-**
-, Professor 
-|
- Mines Paris – PSL, OIE Laboratory (Centre Observation, Impacts, Énergie), France 
-|
+| Author | Affiliation |
+|--------|-------------|
+| **Haytham El-Houari**, PhD | Université Sidi Mohamed Ben Abdellah (USMBA), Fès, Morocco |
+| **Cyril Voyant**, Professor | Mines Paris – PSL, OIE Laboratory (Centre Observation, Impacts, Énergie), France |
 
 The SmartTunnel project investigates electrical demand modeling, energy efficiency and renewable integration for road tunnels. The present open-source tool is one of its synthetic-data outputs.
 
@@ -225,35 +202,10 @@ where $T_{\text{raw}}(t)$ is the sum of a night floor and morning/evening Gaussi
 
 For each calendar day $d$, two independent Bernoulli draws decide whether a pollution episode and/or an accident occur. If an event occurs, its start time and duration are drawn uniformly:
 
-
-|
- Event type 
-|
- start hour 
-|
- duration 
-|
-|
------------:
-|
------------:
-|
----------:
-|
-|
- pollution  
-|
- $\mathcal{U}(7, 18)$ 
-|
- $\mathcal{U}(2, 8)$ 
-|
-|
- accident   
-|
- $\mathcal{U}(6.5, 20)$ 
-|
- $\mathcal{U}(0.5, 3)$ 
-|
+| Event type | start hour | duration |
+|-----------:|-----------:|---------:|
+| pollution  | $\mathcal{U}(7, 18)$ | $\mathcal{U}(2, 8)$ |
+| accident   | $\mathcal{U}(6.5, 20)$ | $\mathcal{U}(0.5, 3)$ |
 
 Events that extend past 24:00 correctly spill into the next calendar day.
 
