@@ -4,7 +4,7 @@ Runs 20 independent realizations and summarises
 annual energy and peak power distributions.
 """
 import pandas as pd
-from simulator import TunnelConfig, run_monte_carlo
+from tunnel_load_simulator.simulator import TunnelConfig, run_monte_carlo
 
 cfg = TunnelConfig(
     length_m=1500,
