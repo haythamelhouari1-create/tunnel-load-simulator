@@ -1,9 +1,9 @@
 """
 Monte Carlo example for Tunnel Load Simulator.
+Runs 20 independent realizations and summarises
+annual energy and peak power distributions.
 """
-
 import pandas as pd
-
 from simulator import TunnelConfig, run_monte_carlo
 
 cfg = TunnelConfig(
@@ -39,4 +39,16 @@ results = run_monte_carlo(
     base_seed=42,
 )
 
-print(results["kpis"].head())
+kpis = results["kpis"]
+
+print("=== Monte Carlo results (20 runs) ===")
+print()
+print("Annual energy (MWh):")
+print(f"  Median : {kpis['annualized_mwh'].median():.1f}")
+print(f"  P10    : {kpis['annualized_mwh'].quantile(0.10):.1f}")
+print(f"  P90    : {kpis['annualized_mwh'].quantile(0.90):.1f}")
+print()
+print("Peak power (kW):")
+print(f"  Median : {kpis['peak_kw'].median():.1f}")
+print(f"  P10    : {kpis['peak_kw'].quantile(0.10):.1f}")
+print(f"  P90    : {kpis['peak_kw'].quantile(0.90):.1f}")
