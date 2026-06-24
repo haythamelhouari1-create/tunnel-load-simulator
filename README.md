@@ -35,7 +35,6 @@ If you use this software in academic work, please cite it (see *Citation* sectio
 
 ## Repository layout
 
-
 ```text
 .
 ├── app.py                  # Streamlit UI (imports the engine)
@@ -62,7 +61,6 @@ If you use this software in academic work, please cite it (see *Citation* sectio
 - `examples/` — minimal standalone scripts to get started without the Streamlit UI.
 - `tests/` — validation and reproducibility tests (no Streamlit required).
 - `src/` — reusable simulation package, importable independently of the app.
-```
 
 ---
 
@@ -109,6 +107,7 @@ print(results["kpis"].describe())
 ```
 
 ---
+
 ## Examples
 
 ### Basic simulation
@@ -130,6 +129,7 @@ Runs a full Monte Carlo experiment (20 independent realizations) and summarises 
 These scripts are self-contained and require only `simulator.py` and the packages listed in `requirements.txt`. They provide a quick starting point for users who want to use the simulation engine programmatically, without the Streamlit interface.
 
 ---
+
 ## Monte Carlo methodology
 
 For each user-selected configuration, the simulator performs **N independent runs** with seeds `base_seed + i` for `i = 0..N-1`. Each run produces a full time series at the chosen resolution.
@@ -203,9 +203,9 @@ where $T_{\text{raw}}(t)$ is the sum of a night floor and morning/evening Gaussi
 
 For each calendar day $d$, two independent Bernoulli draws decide whether a pollution episode and/or an accident occur. If an event occurs, its start time and duration are drawn uniformly:
 
-| Event type | start hour    | duration |
-|-----------:|--------------:|---------:|
-| pollution  | $\mathcal{U}(7, 18)$ | $\mathcal{U}(2, 8)$  |
+| Event type | start hour | duration |
+|-----------:|-----------:|---------:|
+| pollution  | $\mathcal{U}(7, 18)$ | $\mathcal{U}(2, 8)$ |
 | accident   | $\mathcal{U}(6.5, 20)$ | $\mathcal{U}(0.5, 3)$ |
 
 Events that extend past 24:00 correctly spill into the next calendar day.
